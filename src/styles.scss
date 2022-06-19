@@ -1,0 +1,67 @@
+@import '~@angular/material/theming';
+@include mat-core();
+// https://www.nikhilwalvekar.com/ng-mat-theme-generator/
+
+
+$mat-primary-scheme: (
+  100: #878d9e,
+  500: #232731,
+  700: #0b0d11,
+  contrast: (
+    100: rgba(0,0,0,0.87),
+    500: #ffffff,
+    700: #ffffff,
+  )
+);
+$mat-accent-scheme: (
+  100: #616e76,
+  500: #455158,
+  700: #999a9d,
+  contrast: (
+    100: rgba(236, 236, 236, 0.95),
+    500: rgba(250, 247, 247, 0.88),
+    700: rgba(255, 255, 255, 0.51),
+  )
+);
+
+
+$mat-warning-scheme: (
+  100: rgba(120, 107, 61, 0.95),
+  500: rgba(128, 123, 35, 0.95),
+  700: rgba(112, 120, 1, 0.95),
+  contrast: (
+    100: rgba(236, 236, 236, 0.95),
+    500: rgba(250, 247, 247, 0.88),
+    700: rgba(255, 255, 255, 0.51),
+  )
+);
+
+$mat-primary-palette: mat-palette($mat-primary-scheme);
+$mat-accent-palette: mat-palette($mat-accent-scheme);
+$mat-warning-palette: mat-palette($mat-warning-scheme);
+
+$app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette,$mat-warning-palette);
+.light-mode {
+  @include angular-material-theme($app-light-theme);
+}
+
+$app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette,$mat-warning-palette);
+.dark-mode {
+  @include angular-material-theme($app-dark-theme);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h2, p {
+  padding: 16px;
+}
+.mr-8 {
+  margin-right: 8px;
+}
+.right-aligned-header > .mat-content {
+  justify-content: space-between;
+}
+
+.mat-content > mat-panel-title, .mat-content > mat-panel-description {
+  flex: 0 0 auto;
+}

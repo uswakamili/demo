@@ -1,0 +1,27 @@
+
+
+.Success{
+  color: rgba(0, 128, 0, 0.75);
+}
+.Fail{
+  color: rgba(255, 21, 0, 0.75);
+}
+.UP{
+  color: rgba(0, 128, 0, 0.75);
+}
+.DOWN{
+  color: rgba(255, 200, 0, 0.75);
+}
+.NOTFOUND{
+  color: rgba(255, 21, 0, 0.75);
+}
+.flex-stretch {
+  flex: 1 0 auto;
+}
+.unknown{
+  color: rgba(160, 159, 159, 0.75);
+}
+
+.mat-column-name {
+  flex: 0 0 23%;
+}

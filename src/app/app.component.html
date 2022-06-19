@@ -1,0 +1,74 @@
+<div class="mat-app-background">
+  <mat-toolbar color="primary" >
+    <mat-toolbar-row *ngIf="!isLoggedIn()">
+      <mat-icon class="link" routerLink="/home" style="width: 50px; height:30px" svgIcon="app-icon"></mat-icon>
+      <h1 class="link" routerLink="/home" >YOUR APP NAME</h1>
+      <div class="flex-stretch"></div>
+      <a mat-button mat-stroked-button  routerLink="/docs/intro">Docs</a>
+      <!--<div class="flex-stretch"></div>-->
+      <mat-divider [vertical]=true></mat-divider>
+      <a mat-button mat-stroked-button  routerLink="/login">Sign Up</a>
+      <mat-divider [vertical]=true></mat-divider>
+      <mat-icon class="link" [matMenuTriggerFor]="dropdownMenu">more_vert</mat-icon>
+      <mat-menu #dropdownMenu x-position="before">
+        <a mat-menu-item href="" routerLink="/login">
+          <mat-icon>login</mat-icon>
+          <span>Login</span>
+        </a>
+        <a mat-menu-item href="" routerLink="/home">
+          <mat-icon>info_outline</mat-icon>
+          <span>About</span>
+        </a>
+      </mat-menu>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="isLoggedIn()">
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+      <h1 class="link"  routerLink="/home" >YOUR APP NAME</h1>
+      <div class="flex-stretch"></div>
+      <mat-icon class="mr-8">brightness_5</mat-icon>
+      <mat-slide-toggle [(ngModel)]="isDarkMode" (click)="toggleDarkMode()" class="mr-8"></mat-slide-toggle>
+      <mat-icon>bedtime</mat-icon>
+
+      <img *ngIf="isLoggedIn()" [matMenuTriggerFor]="dropdownMenu" height="24px" width="24px" alt="">
+
+      <mat-menu #dropdownMenu x-position="before">
+        <a mat-menu-item href="" (click)="onLogout($event)">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </a>
+        <a mat-menu-item href="" routerLink="/home">
+          <mat-icon>info_outline</mat-icon>
+          <span>About</span>
+        </a>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav >
+      <mat-toolbar-row >
+        <h1>Catwalk</h1>
+      </mat-toolbar-row>
+      <mat-nav-list>
+        <mat-list-item>
+          <mat-icon>dashboard</mat-icon>
+          <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/dashboard'">Dashboard</a>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>web</mat-icon>
+          <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/home'">Home</a>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>info</mat-icon>
+          <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/docs/intro'">Docs</a>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content ">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
